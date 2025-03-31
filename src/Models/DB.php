@@ -1,9 +1,15 @@
 <?php
 declare(strict_types=1);
-
 namespace App\Models;
+
+require 'vendor/autoload.php';
+
+use \Dotenv\Dotenv;
 use \PDO;
 use \PDOException;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
 
 class DB {
     private static ?PDO $pdo = null;
