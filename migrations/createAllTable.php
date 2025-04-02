@@ -50,10 +50,10 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS users_tasks (
      finished_at TIMESTAMP
 )");
 
-$pdo->exec("ALTER TABLE requirements ADD FOREIGN KEY (task_id) REFERENCES tasks (id)");
+$pdo->exec("ALTER TABLE requirements ADD FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE");
 
-$pdo->exec("ALTER TABLE required_knowledge ADD FOREIGN KEY (task_id) REFERENCES tasks (id)");
+$pdo->exec("ALTER TABLE required_knowledge ADD FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE");
 
-$pdo->exec("ALTER TABLE users_tasks ADD FOREIGN KEY (user_id) REFERENCES users (id)");
-  
-$pdo->exec("ALTER TABLE users_tasks ADD FOREIGN KEY (task_id) REFERENCES tasks (id)");
+$pdo->exec("ALTER TABLE users_tasks ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE");
+
+$pdo->exec("ALTER TABLE users_tasks ADD FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE");
