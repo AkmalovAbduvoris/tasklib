@@ -8,6 +8,7 @@ $routes = [
   '/admin'    => 'src/Controllers/Admin.php',
   '/login'    => 'src/Controllers/Login.php',
   '/register' => 'src/Controllers/Register.php',
+  '/task'     => 'src/Controllers/Task.php',
 ];
 
 
@@ -16,7 +17,9 @@ function routeToController($uri, $routes) {
     require $routes[$uri];
   }
   else {
-    echo 'Xato';
+    echo "<pre>";
+    var_dump($_SERVER);
+    echo "</pre>";
   }
 }
 

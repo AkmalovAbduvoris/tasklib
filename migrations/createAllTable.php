@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 use App\Models\DB;
 
@@ -20,9 +20,9 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS users (
 $pdo->exec("CREATE TABLE IF NOT EXISTS tasks (
      id INT PRIMARY KEY AUTO_INCREMENT,
      title VARCHAR(255),
-     descirption VARCHAR(255) NOT NULL,
+     description VARCHAR(255) NOT NULL,
      status ENUM('published', 'drafted') DEFAULT 'drafted',
-     difficuly ENUM('easy','medium','hard') NOT NULL,
+     difficulty ENUM('easy','medium','hard') NOT NULL,
      deadline INT NOT NULL,
      created_at TIMESTAMP,
      updated_at TIMESTAMP

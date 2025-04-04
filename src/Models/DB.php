@@ -41,7 +41,7 @@ class DB {
 
     public static function getConnection(): PDO {
         if (self::$pdo === null) {
-            self::connect(); // **Agar ulanish bo‘lmasa, avtomatik chaqiriladi**
+            self::connect();
         }
         return self::$pdo;
     }

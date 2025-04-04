@@ -1,3 +1,11 @@
+<?php
+declare(strict_types=1);
+use App\Controllers\Home;
+
+$tasks = (new Home())->fetchAllTasks();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,24 +26,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row-2">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td >Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
+      <?php
+      foreach ($tasks as $task) {
+        echo "<tr>";
+        echo "<td>{$task['id']}</td>";
+        echo "<td>{$task['title']}</td>";
+        echo "<td>{$task['status']}</td>";
+        echo "<td>{$task['difficulty']}</td>";
+        echo "<td>{$task['deadline']}</td>";
+        echo "<td>
+          <a href='/task?id={$task['id']}'>View</a>
+        </td>";
+        echo "</tr>";
+      }
+      ?>
   </table>
 </body>
 </html>
