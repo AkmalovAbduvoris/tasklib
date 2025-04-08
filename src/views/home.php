@@ -23,6 +23,7 @@ $tasks = (new Home())->fetchAllTasks();
         <th scope="col">Status</th>
         <th scope="col">Difficuly</th>
         <th scope="col">Deadline</th>
+        <th scope="col">View</th>
       </tr>
     </thead>
     <tbody>

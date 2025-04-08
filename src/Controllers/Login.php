@@ -10,10 +10,10 @@ require 'src/views/login.php';
 class Login {
   public function __construct() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $this->handleRegister();
+      $this->handleLogin();
     }
   }
-  private function handleRegister() {
+  private function handleLogin() {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? ''; 
     if (empty($email) || empty($password)) {
@@ -21,10 +21,20 @@ class Login {
       return;
     }
     $user = (new Users())->getUserByEmailAndPassword($email, $password);
-    if ($user) {
+      $_SESSION['user'] = [
+        'id'    => $user['id'],
+        'name'  => $user['name'],
+        'email' => $user['email'],
+        'role'  => $user['role'],
+      ];
+      var_dump($_SESSION['user']);
+      if ($user['role'] == 'admin') {
+        header("Location: /admin");
+        exit;
+      }
+      if ($user['role'] == 'user') {
         header("Location: /");
-    }else {
-        echo "Invalid email or password";
-    }
+        exit;
+      }
   }
 }

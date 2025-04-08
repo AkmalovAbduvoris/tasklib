@@ -10,10 +10,10 @@ require 'src/views/register.php';
 class Register {
   public function __construct() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $this->handleLogin();
+      $this->handleRegister();
     }
   }
-  private function handleLogin() {
+  private function handleRegister() {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
     $username = $_POST['username'] ?? '';
